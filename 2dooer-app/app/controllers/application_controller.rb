@@ -7,13 +7,14 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "our_awesome_2dooer_app"
+    #session id will be created for this session, extra security
   end
 
   get "/" do
     if logged_in?
       redirect "/users/#{current_user.id}"
-    else
-      erb :welcome
+    else  
+    erb :welcome
     end
   end
 

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
     
   #the purpose of this route is to receive the login form,
-  # find the user, and log the user in (create a session)
+  # find the user, and log the user in (create a session)(Key Value Pair)
   post '/login' do 
     #find the user
     @user = User.find_by(email: params[:email])
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
       puts session
       redirect "users/#{@user.id}"
       #Log the user in - create the user session
-
       #redirect to the user's landing page (show? index? dashboard?)
 
     else
