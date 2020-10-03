@@ -26,5 +26,16 @@ class ListsController < ApplicationController
     end
 
     # show page for a list
+    # dynamic route/ 
+    get '/lists/:id' do
+        @list = List.find(params[:id])
+        erb :'lists/show'
+    end
+
+    # This route should send us to lists/edit.erb, which will
+    # render a edit form
+    get '/lists/:id/edit' do
+        erb :'/lists/edit'
+      end
     # index route for all lists
 end
