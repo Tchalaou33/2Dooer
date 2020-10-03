@@ -1,1 +1,9 @@
-Edit Form goes here...
+Edit Page For List
+
+<form class="" action="/lists/<%= @list.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Content:</label>
+  <textarea name="content" style="width:auto; height:auto;"><%= @list.content 
+  %></textarea>
+  <input type="submit" name="" value="Edit List">
+</form>
