@@ -1,2 +1,8 @@
-Index page for list
-<%= @lists %>
+All Lists
+<% @lists.each do |list| %>
+    <h4><a href="/lists/<%= list.id %>"><%= 
+    list.created_at %></a></h4>
+    <p><%= list.content %></p>
+    <p>By <%= list.user.name %></p>
+    <br><br>
+<% end %>
