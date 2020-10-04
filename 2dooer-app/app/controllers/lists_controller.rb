@@ -47,7 +47,7 @@ class ListsController < ApplicationController
     get '/lists/:id/edit' do
         set_list
         if logged_in?
-            if @list.user == current_user
+            if authorized_to_edit?(@list)
                 erb :'/lists/edit'
             else
                 redirect "users/#{current_user.id}"
@@ -63,7 +63,7 @@ class ListsController < ApplicationController
         set_list
         if logged_in?
 
-            if @list.user == current_user
+            if authorized_to_edit?(@list)
             #2. modify (update) list
                 @list.update(content: params[:content])
         #3. redirect to show page

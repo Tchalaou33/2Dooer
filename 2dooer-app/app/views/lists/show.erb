@@ -4,7 +4,7 @@ Show Page For A List
 <p><%= @list.content %></p>
 
 
-<% if current_user == @list.user %>
+<% if authorized_to_edit?(@list) %>
     <a href="/lists/<%= @list.id %>/edit">Edit Entry</a>
 
 Delete Link
