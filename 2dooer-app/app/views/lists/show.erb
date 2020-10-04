@@ -3,7 +3,9 @@ Show Page For A List
 
 <p><%= @list.content %></p>
 
-Edit Link 
-<a href="/lists/<%= @list.id %>/edit">Edit Entry</a>
+
+<% if current_user == @list.user %>
+    <a href="/lists/<%= @list.id %>/edit">Edit Entry</a>
 
 Delete Link
+<% end %>
