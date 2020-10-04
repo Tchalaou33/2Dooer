@@ -1,5 +1,10 @@
 class ListsController < ApplicationController
 
+    get '/lists' do
+        @lists = List.all
+        erb :'lists/index'
+    end
+
     # get lists/new to render a form to create new entry. GET request will show something
     # its job is to render the form page
     get '/lists/new' do
@@ -32,22 +37,42 @@ class ListsController < ApplicationController
         erb :'lists/show'
     end
 
+      #** MAJOR PROBLEMS!!***
+      # RIGHT NOW, ANYONE CAN EDIT ANYONE ELSE'S LIST!!!
+      # ALSO, I CAN EDIT A JOURNAL ENTRY TO BE BLANK!!
+
+
     # This route should send us to lists/edit.erb, which will
     # render a edit form
     get '/lists/:id/edit' do
         set_list
-        erb :'/lists/edit'
-      end
+        if logged_in?
+            if @list.user == current_user
+                erb :'/lists/edit'
+            else
+                redirect "users/#{current_user.id}"
+            end
+        else
+            redirect'/'
+        end
+    end
 
       # This action's job is to ...??
-      patch '/lists/:id' do
+    patch '/lists/:id' do
         #1. find the list 
         set_list
-        #2. modify (update) list
-        @list.update(content: params[:content])
+        if logged_in?
+
+            if @list.user == current_user
+            #2. modify (update) list
+                @list.update(content: params[:content])
         #3. redirect to show page
-        redirect "/lists/#{@list.id}"
-      end
+                redirect "/lists/#{@list.id}"
+            else
+                redirect "users/#{current_user.id}"
+            end
+        end
+    end
     # index route for all lists
 
     private
