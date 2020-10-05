@@ -63,7 +63,7 @@ class ListsController < ApplicationController
         set_list
         if logged_in?
 
-            if authorized_to_edit?(@list)
+            if authorized_to_edit?(@list) && params[:content] != ""
             #2. modify (update) list
                 @list.update(content: params[:content])
         #3. redirect to show page
@@ -71,6 +71,19 @@ class ListsController < ApplicationController
             else
                 redirect "users/#{current_user.id}"
             end
+        else
+            redirect '/'
+        end
+    end
+
+    delete '/lists/:id' do
+        set_list
+        if authorized_to_edit?(@list)
+            @list.destroy
+            redirect '/lists'
+        else
+            redirect '/lists'
+
         end
     end
     # index route for all lists
