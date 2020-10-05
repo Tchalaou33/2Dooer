@@ -7,7 +7,6 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "our_awesome_2dooer_app"
-    #session id will be created for this session, extra security
   end
 
   get "/" do
@@ -21,7 +20,6 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      #true if user is logged in, otherwise false
       !!current_user
     end
 
@@ -32,8 +30,6 @@ class ApplicationController < Sinatra::Base
     def authorized_to_edit?(list)
       list.user == current_user
     end
-
-    #BULID HELPER METHOD FOR REDIRECTING IF NOT LOGGED IN!!
 
   end
 
