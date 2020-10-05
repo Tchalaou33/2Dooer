@@ -1,15 +1,14 @@
-Show Page For A List
-<br><br>
+<h3>Show Page For A List</h3>
 <br><br>
 <p><%= @list.content %></p>
 
 
 <% if authorized_to_edit?(@list) %>
-    <a href="/lists/<%= @list.id %>/edit">Edit Entry</a>
+    <a href="/lists/<%= @list.id %>/edit">Edit List</a>
     <br><br>
     <form class="" action="/lists/<%= @list.id %>"
     method="post">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" name="" value="Delete this Entry">
+        <input type="submit" name="" value="Delete this List">
     </form>
 <% end %>
