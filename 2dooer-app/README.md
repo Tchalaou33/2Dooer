@@ -1,4 +1,6 @@
 
+To Dooer App
+
 A  simple To Do List App that allows users to log in, sign up, and create lists. Users can also edit and delete their own lists. 
 
 LICENSE
