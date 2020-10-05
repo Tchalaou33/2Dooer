@@ -15,9 +15,11 @@
   </head>
   <body>
     <div class="nav">
-      <a href="/logout">Logout</a>
-      <a href="/lists">All Lists</a>
-      <a href="/lists/new">New List</a>
+      <% if logged_in? %>
+        <a href="/logout">Logout</a>
+        <a href="/lists">All Lists</a>
+        <a href="/lists/new">New List</a>
+      <% end %>
     </div>
     <div class="wrapper">
 
