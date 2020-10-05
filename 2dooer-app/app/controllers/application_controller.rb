@@ -33,6 +33,8 @@ class ApplicationController < Sinatra::Base
       list.user == current_user
     end
 
+    #BULID HELPER METHOD FOR REDIRECTING IF NOT LOGGED IN!!
+
   end
 
 end
